@@ -1,0 +1,1777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>F3 Energy - Mental Fuel for People Going Somewhere</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --f3-primary: #B02225;
+      --f3-primary-dark: #8a1a1c;
+      --f3-bg: #FFFFFF;
+      --f3-bg-alt: #F5F7F9;
+      --f3-bg-dark: #111111;
+      --f3-text: #1a1a1a;
+      --f3-text-light: #666666;
+      --f3-text-on-dark: #FFFFFF;
+      --section-spacing: 80px;
+    }
+
+    body {
+      font-family: 'Avenir', 'Avenir Next', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--f3-text);
+      background: var(--f3-bg);
+      line-height: 1.6;
+    }
+
+    /* ============================================
+       ANNOUNCEMENT BANNER
+       ============================================ */
+    .announcement-bar {
+      background: var(--f3-bg-dark);
+      color: var(--f3-text-on-dark);
+      padding: 10px 20px;
+      text-align: center;
+      font-size: 13px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .announcement-bar span {
+      white-space: nowrap;
+    }
+
+    .announcement-bar .divider {
+      display: inline;
+    }
+
+    .announcement-bar strong {
+      color: var(--f3-primary);
+    }
+
+    @media (max-width: 768px) {
+      .announcement-bar {
+        padding: 8px 15px;
+        font-size: 12px;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .announcement-bar .divider {
+        display: none;
+      }
+    }
+
+    /* ============================================
+       HEADER
+       ============================================ */
+    .header {
+      background: var(--f3-bg);
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid #eee;
+    }
+
+    .logo {
+      text-decoration: none;
+    }
+
+    .logo img {
+      height: 32px;
+      width: auto;
+    }
+
+    .nav {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: var(--f3-text);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
+    }
+
+    .nav a:hover {
+      color: var(--f3-primary);
+    }
+
+    /* Hamburger menu */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 5px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--f3-text);
+      transition: all 0.3s;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    @media (max-width: 768px) {
+      .header {
+        padding: 12px 20px;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--f3-bg);
+        flex-direction: column;
+        gap: 0;
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        border-bottom: 1px solid #eee;
+      }
+
+      .nav.active {
+        max-height: 400px;
+      }
+
+      .nav a {
+        padding: 15px 20px;
+        border-bottom: 1px solid #eee;
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    /* ============================================
+       HERO - Brand Focused
+       ============================================ */
+    .hero {
+      background: #0a0a0a;
+      color: var(--f3-text-on-dark);
+      padding: 100px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero-label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: #fff;
+      margin-bottom: 20px;
+      background: var(--f3-primary);
+      display: inline-block;
+      padding: 10px 24px;
+      border-radius: 30px;
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .hero-subtitle {
+      font-size: 20px;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 15px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-rating {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 40px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .stars {
+      color: #FFD700;
+      letter-spacing: 2px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-ctas .btn {
+      min-width: 200px;
+      text-align: center;
+    }
+
+    .btn {
+      padding: 16px 40px;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-decoration: none;
+      border: 2px solid;
+      border-radius: 0;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--f3-primary);
+      border-color: var(--f3-primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--f3-primary-dark);
+      border-color: var(--f3-primary-dark);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border-color: white;
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background: white;
+      color: var(--f3-bg-dark);
+    }
+
+    .btn-dark {
+      background: var(--f3-bg-dark);
+      border-color: var(--f3-bg-dark);
+      color: white;
+    }
+
+    .btn-dark:hover {
+      background: #333;
+      border-color: #333;
+    }
+
+    /* ============================================
+       PRODUCT LINES - Two Categories
+       ============================================ */
+    .product-lines {
+      padding: var(--section-spacing) 40px;
+      background: var(--f3-bg);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--f3-primary);
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.5px;
+    }
+
+    .lines-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .line-card {
+      position: relative;
+      border-radius: 0;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: flex-end;
+      text-decoration: none;
+      color: white;
+      transition: transform 0.3s;
+    }
+
+    .line-card:hover {
+      transform: scale(1.02);
+    }
+
+    .line-card-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.5s;
+    }
+
+    .line-card:hover .line-card-bg {
+      transform: scale(1.05);
+    }
+
+    .line-card-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.1) 100%);
+    }
+
+    .line-card-content {
+      position: relative;
+      z-index: 1;
+      padding: 30px;
+      width: 100%;
+    }
+
+    .line-card h3 {
+      font-size: 28px;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .line-card p {
+      font-size: 16px;
+      opacity: 0.9;
+      margin-bottom: 15px;
+    }
+
+    .line-card .link-arrow {
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .line-card .link-arrow::after {
+      content: '→';
+      transition: transform 0.2s;
+    }
+
+    .line-card:hover .link-arrow::after {
+      transform: translateX(5px);
+    }
+
+    /* ============================================
+       SOCIAL PROOF / CONTENT CAROUSEL
+       ============================================ */
+    .social-proof {
+      padding: 60px 40px;
+      background: var(--f3-bg-alt);
+      overflow: hidden;
+    }
+
+    .social-proof .section-header {
+      margin-bottom: 30px;
+    }
+
+    .content-carousel {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      padding: 10px 20px 20px 20px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      justify-content: flex-start;
+    }
+
+    @media (max-width: 1024px) {
+      .content-carousel {
+        justify-content: flex-start;
+      }
+    }
+
+    .content-carousel::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .content-carousel::-webkit-scrollbar-track {
+      background: #ddd;
+      border-radius: 3px;
+    }
+
+    .content-carousel::-webkit-scrollbar-thumb {
+      background: var(--f3-primary);
+      border-radius: 3px;
+    }
+
+    .content-card {
+      flex: 0 0 220px;
+      scroll-snap-align: start;
+      border-radius: 0;
+      overflow: hidden;
+      background: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      transition: transform 0.3s;
+    }
+
+    .content-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .content-card-media {
+      aspect-ratio: 9/16;
+      background: #222;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .content-card-media img,
+    .content-card-media video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .content-card-media.video::after {
+      content: '▶';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 50px;
+      height: 50px;
+      background: rgba(255,255,255,0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: var(--f3-text);
+    }
+
+    .carousel-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .carousel-arrow {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 2px solid var(--f3-primary);
+      background: white;
+      color: var(--f3-primary);
+      font-size: 28px;
+      font-weight: 300;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      line-height: 1;
+      padding-bottom: 3px;
+    }
+
+    .carousel-arrow:hover {
+      background: var(--f3-primary);
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      .carousel-arrow {
+        width: 36px;
+        height: 36px;
+        font-size: 22px;
+      }
+    }
+
+    .content-card-caption {
+      padding: 15px;
+      font-size: 13px;
+      color: var(--f3-text-light);
+      line-height: 1.5;
+    }
+
+    .content-card-caption strong {
+      color: var(--f3-text);
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .instagram-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 30px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--f3-text);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .instagram-link:hover {
+      color: var(--f3-primary);
+    }
+
+    /* ============================================
+       WHY F3 - Differentiators
+       ============================================ */
+    .why-f3 {
+      padding: var(--section-spacing) 40px;
+      background: var(--f3-bg-alt);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .feature-item {
+      text-align: center;
+    }
+
+    .feature-icon {
+      width: 50px;
+      height: 50px;
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .feature-icon svg {
+      width: 40px;
+      height: 40px;
+      stroke: var(--f3-text);
+      stroke-width: 1.5;
+      fill: none;
+    }
+
+    .feature-item h4 {
+      font-size: 16px;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .feature-item p {
+      font-size: 14px;
+      color: var(--f3-text-light);
+      line-height: 1.5;
+    }
+
+    /* ============================================
+       BESTSELLERS - Product Preview
+       ============================================ */
+    .bestsellers {
+      padding: var(--section-spacing) 40px;
+      background: var(--f3-bg);
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 25px;
+      max-width: 1200px;
+      margin: 0 auto 40px;
+    }
+
+    .product-card {
+      text-decoration: none;
+      color: var(--f3-text);
+      transition: transform 0.2s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .product-image {
+      background: transparent;
+      border-radius: 0;
+      aspect-ratio: 1;
+      display: block;
+      margin-bottom: 15px;
+      overflow: hidden;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+
+    .product-card:hover .product-image img {
+      transform: scale(1.1);
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: var(--f3-primary);
+      color: white;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 5px 10px;
+      border-radius: 0;
+      z-index: 2;
+    }
+
+    .product-image {
+      position: relative;
+      border-radius: 0;
+      overflow: hidden;
+    }
+
+    .product-name {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .product-price {
+      font-size: 14px;
+      color: var(--f3-text-light);
+    }
+
+    .section-cta {
+      text-align: center;
+    }
+
+    /* ============================================
+       TRUST BADGES
+       ============================================ */
+    .trust-badges {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding: 20px 40px;
+      background: var(--f3-bg);
+      border-bottom: 1px solid #eee;
+      overflow: hidden;
+    }
+
+    .trust-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--f3-text-light);
+      white-space: nowrap;
+    }
+
+    .trust-badge svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--f3-primary);
+      stroke-width: 2;
+      fill: none;
+      flex-shrink: 0;
+    }
+
+    /* Mobile auto-scroll carousel */
+    @media (max-width: 768px) {
+      .trust-badges {
+        padding: 15px 0;
+        gap: 0;
+        justify-content: flex-start;
+      }
+
+      .trust-badges-track {
+        display: flex;
+        animation: scroll-badges 20s linear infinite;
+      }
+
+      .trust-badge {
+        padding: 0 25px;
+        border-right: 1px solid #eee;
+      }
+
+      .trust-badge:last-child {
+        border-right: none;
+      }
+
+      @keyframes scroll-badges {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      .trust-badges:hover .trust-badges-track {
+        animation-play-state: paused;
+      }
+    }
+
+    @media (min-width: 769px) {
+      .trust-badges-track {
+        display: contents;
+      }
+      /* Hide duplicates on desktop */
+      .trust-badge:nth-child(n+5) {
+        display: none;
+      }
+    }
+
+    /* ============================================
+       PLACEHOLDER IMAGES
+       ============================================ */
+    .placeholder-image {
+      background: linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 50%, #e0e0e0 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 10px;
+      color: #888;
+      font-size: 14px;
+      text-align: center;
+      border: 2px dashed #ccc;
+    }
+
+    .placeholder-image svg {
+      width: 40px;
+      height: 40px;
+      stroke: #aaa;
+      stroke-width: 1.5;
+      fill: none;
+    }
+
+    .placeholder-image span {
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 12px;
+    }
+
+    /* ============================================
+       REVIEWS
+       ============================================ */
+    .reviews {
+      padding: var(--section-spacing) 40px;
+      background: var(--f3-bg-dark);
+      color: var(--f3-text-on-dark);
+    }
+
+    .reviews .section-title {
+      color: white;
+    }
+
+    .reviews-stats {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .reviews-score {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .reviews-stars {
+      font-size: 24px;
+      color: #FFD700;
+      letter-spacing: 4px;
+      margin-bottom: 5px;
+    }
+
+    .reviews-count {
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .review-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 30px;
+      border-radius: 0;
+    }
+
+    .review-stars {
+      color: #FFD700;
+      margin-bottom: 15px;
+      letter-spacing: 2px;
+    }
+
+    .review-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .review-text {
+      font-size: 14px;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .review-author {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+    }
+
+    /* ============================================
+       BRAND STORY
+       ============================================ */
+    .brand-story {
+      padding: var(--section-spacing) 40px;
+      background: var(--f3-bg);
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      max-width: 1100px;
+      margin: 0 auto;
+      align-items: center;
+    }
+
+    .story-image {
+      border-radius: 0;
+      overflow: hidden;
+    }
+
+    .story-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .story-content h2 {
+      font-size: clamp(24px, 3vw, 32px);
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .story-content p {
+      font-size: 16px;
+      color: var(--f3-text-light);
+      line-height: 1.8;
+      margin-bottom: 15px;
+    }
+
+    .story-content .btn {
+      margin-top: 15px;
+    }
+
+    /* ============================================
+       NEWSLETTER
+       ============================================ */
+    .newsletter {
+      padding: var(--section-spacing) 40px;
+      background: var(--f3-bg-alt);
+      text-align: center;
+    }
+
+    .newsletter-content {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .newsletter h2 {
+      font-size: 28px;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .newsletter p {
+      font-size: 16px;
+      color: var(--f3-text-light);
+      margin-bottom: 30px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 10px;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      padding: 16px 20px;
+      font-size: 14px;
+      border: 1px solid #ddd;
+      border-radius: 0;
+      outline: none;
+    }
+
+    .newsletter-form input:focus {
+      border-color: var(--f3-primary);
+    }
+
+    .newsletter-form button {
+      padding: 16px 30px;
+      background: var(--f3-primary);
+      color: white;
+      border: none;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .newsletter-form button:hover {
+      background: var(--f3-primary-dark);
+    }
+
+    /* ============================================
+       FOOTER
+       ============================================ */
+    .footer {
+      background: var(--f3-bg-dark);
+      color: var(--f3-text-on-dark);
+      padding: 60px 40px 30px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto 40px;
+    }
+
+    @media (max-width: 768px) {
+      .footer-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+      }
+      .footer-brand {
+        grid-column: 1 / -1;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .footer-col {
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .footer-col:last-child {
+        grid-column: 1 / -1;
+      }
+    }
+
+    .footer-brand .logo {
+      margin-bottom: 15px;
+      display: inline-block;
+    }
+
+    .footer-brand p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.6;
+    }
+
+    .footer-col h4 {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+    }
+
+    .footer-col a {
+      display: block;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      font-size: 14px;
+      margin-bottom: 10px;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover {
+      color: white;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 30px;
+      text-align: center;
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* ============================================
+       RESPONSIVE
+       ============================================ */
+    @media (max-width: 1024px) {
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .reviews-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      :root {
+        --section-spacing: 60px;
+      }
+      .header {
+        padding: 15px 20px;
+      }
+      .hero {
+        padding: 80px 20px;
+        min-height: 450px;
+      }
+      .hero-video {
+        width: 200%;
+        height: 100%;
+        min-width: unset;
+        min-height: 100%;
+        object-position: center center;
+      }
+      .hero h1 {
+        font-size: 28px;
+      }
+      .hero-subtitle {
+        font-size: 16px;
+      }
+      .hero-ctas {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+      }
+      .hero-ctas .btn {
+        width: 80%;
+        text-align: center;
+        padding: 16px 20px;
+      }
+      .lines-grid {
+        grid-template-columns: 1fr;
+      }
+      .line-card {
+        aspect-ratio: 1;
+      }
+      .features-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      .story-grid {
+        grid-template-columns: 1fr;
+      }
+      .newsletter-form {
+        flex-direction: column;
+      }
+    }
+
+    /* ============================================
+       FAQ ACCORDION
+       ============================================ */
+    .faq {
+      padding: var(--section-spacing) 40px;
+      background: var(--f3-bg-alt);
+    }
+
+    .faq-list {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      background: white;
+      border: 1px solid #eee;
+      border-radius: 0;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 25px;
+      background: none;
+      border: none;
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 600;
+      text-align: left;
+      color: var(--f3-text);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .faq-question:hover {
+      background: var(--f3-bg-alt);
+    }
+
+    .faq-question .icon {
+      font-size: 20px;
+      color: var(--f3-primary);
+      transition: transform 0.3s;
+      flex-shrink: 0;
+      margin-left: 15px;
+    }
+
+    .faq-item.active .faq-question .icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 300px;
+    }
+
+    .faq-answer-content {
+      padding: 0 25px 25px;
+      font-size: 15px;
+      color: var(--f3-text-light);
+      line-height: 1.7;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <a href="/" class="logo">
+      <img src="https://f3energy.com/cdn/shop/files/f3-logo-dark.png?v=1719325863" alt="F3 Energy">
+    </a>
+    <nav class="nav" id="mainNav">
+      <a href="/collections/energy">ENERGY</a>
+      <a href="/collections/mood">MOOD</a>
+      <a href="/pages/about">ABOUT</a>
+      <a href="/pages/news">NEWS</a>
+      <a href="/pages/where-to-buy">WHERE TO BUY</a>
+      <a href="/account/login">LOGIN</a>
+      <a href="/cart">CART (0)</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <video class="hero-video" autoplay muted loop playsinline>
+      <source src="hero-video.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-label">Fuel · Focus · Finish</div>
+      <h1>Mental Fuel for High Performers</h1>
+      <p class="hero-subtitle">Functional beverages for people going somewhere. Zero sugar. Zero crash. All focus.</p>
+      <div class="hero-rating">
+        <span class="stars">★★★★★</span>
+        <span>4.8/5 from 334 reviews</span>
+      </div>
+      <div class="hero-ctas">
+        <a href="/collections/energy" class="btn btn-primary">Shop Energy</a>
+        <a href="/collections/mood" class="btn btn-secondary">Shop Mood</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BADGES -->
+  <div class="trust-badges">
+    <div class="trust-badges-track">
+      <div class="trust-badge">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        30-Day Money Back Guarantee
+      </div>
+      <div class="trust-badge">
+        <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5a2 2 0 0 1-2 2h-1M6 19a2 2 0 1 0 4 0M14 19a2 2 0 1 0 4 0"/></svg>
+        Free Shipping $75+
+      </div>
+      <div class="trust-badge">
+        <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        10,000+ Happy Customers
+      </div>
+      <div class="trust-badge">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        Vegan & Non-GMO
+      </div>
+      <!-- Duplicates for seamless loop -->
+      <div class="trust-badge">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        30-Day Money Back Guarantee
+      </div>
+      <div class="trust-badge">
+        <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5a2 2 0 0 1-2 2h-1M6 19a2 2 0 1 0 4 0M14 19a2 2 0 1 0 4 0"/></svg>
+        Free Shipping $75+
+      </div>
+      <div class="trust-badge">
+        <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        10,000+ Happy Customers
+      </div>
+      <div class="trust-badge">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        Vegan & Non-GMO
+      </div>
+    </div>
+  </div>
+
+  <!-- BESTSELLERS -->
+  <section class="bestsellers">
+    <div class="section-header">
+      <div class="section-label">Fan Favorites</div>
+      <h2 class="section-title">Bestsellers</h2>
+    </div>
+    <div class="products-grid">
+      <a href="/products/original" class="product-card">
+        <div class="product-image" style="aspect-ratio:1;">
+          <span class="product-badge">Bestseller</span>
+          <img src="https://f3energy.com/cdn/shop/files/Hero_Prod_Image.png?v=1762377071" alt="Energy Original">
+        </div>
+        <div class="product-name">Energy - Original</div>
+        <div class="product-price">$32.99 <small style="color:#666">(12-pack)</small></div>
+      </a>
+      <a href="/products/citrus-clarity" class="product-card">
+        <div class="product-image" style="aspect-ratio:1;">
+          <span class="product-badge">Popular</span>
+          <img src="https://f3energy.com/cdn/shop/files/Hero_Prod_Image_e61ecb41-74bf-48e9-9b75-3feb8339620e.png?v=1762378520" alt="Citrus Clarity">
+        </div>
+        <div class="product-name">Energy - Citrus Clarity</div>
+        <div class="product-price">$32.99 <small style="color:#666">(12-pack)</small></div>
+      </a>
+      <a href="/products/orangesicle" class="product-card">
+        <div class="product-image" style="aspect-ratio:1;">
+          <span class="product-badge">New</span>
+          <img src="https://f3energy.com/cdn/shop/files/Hero_Prod_Image_8e7d3272-cb58-4b97-888e-56e53ecba9d0.png?v=1762377959" alt="Mood Orangesicle">
+        </div>
+        <div class="product-name">Mood - Orangesicle</div>
+        <div class="product-price">$32.99 <small style="color:#666">(12-pack)</small></div>
+      </a>
+      <a href="/products/peach-paradise" class="product-card">
+        <div class="product-image" style="aspect-ratio:1;">
+          <img src="https://f3energy.com/cdn/shop/files/Hero_Prod_Image_fc6d7836-982b-4755-a3c6-9a5829c02d2c.png?v=1762378087" alt="Peach Paradise">
+        </div>
+        <div class="product-name">Mood - Peach Paradise</div>
+        <div class="product-price">$32.99 <small style="color:#666">(12-pack)</small></div>
+      </a>
+    </div>
+    <div class="section-cta">
+      <a href="/collections/all" class="btn btn-dark">Shop All Products</a>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF / CONTENT -->
+  <section class="social-proof">
+    <div class="section-header">
+      <div class="section-label">Real People, Real Results</div>
+      <h2 class="section-title">See F3 in Action</h2>
+    </div>
+    <div class="carousel-wrapper">
+      <button class="carousel-arrow carousel-arrow-left" aria-label="Previous">‹</button>
+      <div class="content-carousel">
+      <!-- Video 1: F3 guy in cap -->
+      <div class="content-card">
+        <div class="content-card-media video">
+          <video src="carousel-video-1.mp4" muted loop playsinline preload="metadata"></video>
+        </div>
+        <div class="content-card-caption">
+          <strong>@f3energy</strong>
+        </div>
+      </div>
+      <!-- Image 1 -->
+      <div class="content-card">
+        <div class="content-card-media">
+          <img src="carousel-1.jpg" alt="F3 Energy lifestyle">
+        </div>
+        <div class="content-card-caption">
+          <strong>@f3energy</strong>
+        </div>
+      </div>
+      <!-- Video 2: Gym/boxing scene -->
+      <div class="content-card">
+        <div class="content-card-media video">
+          <video src="carousel-video-2.mp4" muted loop playsinline preload="metadata"></video>
+        </div>
+        <div class="content-card-caption">
+          <strong>@f3energy</strong>
+        </div>
+      </div>
+      <!-- Image 2 -->
+      <div class="content-card">
+        <div class="content-card-media">
+          <img src="carousel-2.jpg" alt="F3 Energy lifestyle">
+        </div>
+        <div class="content-card-caption">
+          <strong>@f3energy</strong>
+        </div>
+      </div>
+      <!-- Video 3: Harrison Rogers truck -->
+      <div class="content-card">
+        <div class="content-card-media video">
+          <video src="carousel-video-3.mp4" muted loop playsinline preload="metadata"></video>
+        </div>
+        <div class="content-card-caption">
+          <strong>@harrisonjrogers</strong>
+        </div>
+      </div>
+      <!-- Image 3 -->
+      <div class="content-card">
+        <div class="content-card-media">
+          <img src="carousel-3.jpg" alt="F3 Energy lifestyle">
+        </div>
+        <div class="content-card-caption">
+          <strong>@f3energy</strong>
+        </div>
+      </div>
+      <!-- Image 4 -->
+      <div class="content-card">
+        <div class="content-card-media">
+          <img src="carousel-4.jpg" alt="F3 Energy lifestyle">
+        </div>
+        <div class="content-card-caption">
+          <strong>@f3energy</strong>
+        </div>
+      </div>
+      <!-- Image 5 -->
+      <div class="content-card">
+        <div class="content-card-media">
+          <img src="carousel-5.jpg" alt="F3 Energy lifestyle">
+        </div>
+        <div class="content-card-caption">
+          <strong>@f3energy</strong>
+        </div>
+      </div>
+      <!-- Image 6 -->
+      <div class="content-card">
+        <div class="content-card-media">
+          <img src="carousel-6.jpg" alt="F3 Energy lifestyle">
+        </div>
+        <div class="content-card-caption">
+          <strong>@f3energy</strong>
+        </div>
+      </div>
+    </div>
+      <button class="carousel-arrow carousel-arrow-right" aria-label="Next">›</button>
+    </div>
+    <div class="section-header">
+      <a href="https://instagram.com/f3energy" class="instagram-link" target="_blank">
+        Follow @f3energy on Instagram →
+      </a>
+    </div>
+  </section>
+
+  <!-- WHY F3 -->
+  <section class="why-f3">
+    <div class="section-header">
+      <div class="section-label">The F3 Difference</div>
+      <h2 class="section-title">Why Choose F3?</h2>
+    </div>
+    <div class="features-grid">
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <h4>Natural Caffeine</h4>
+        <p>100% natural caffeine from green tea for clean, sustained energy</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h4>Nootropic Stack</h4>
+        <p>L-Theanine + Alpha-GPC for focus and mental clarity</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+        </div>
+        <h4>Zero Sugar</h4>
+        <p>No sugar, no artificial sweeteners, no crash</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+        </div>
+        <h4>Clean Label</h4>
+        <p>No artificial colors, flavors, or preservatives</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCT LINES -->
+  <section class="product-lines">
+    <div class="section-header">
+      <div class="section-label">Join 10,000+ High Performers</div>
+      <h2 class="section-title">Find Your Flow</h2>
+    </div>
+    <div class="lines-grid">
+      <a href="/collections/energy" class="line-card">
+        <div class="line-card-bg" style="position:absolute;inset:0;background-image:url('energy-line-bg.jpg');background-size:cover;background-position:center;"></div>
+        <div class="line-card-overlay"></div>
+        <div class="line-card-content">
+          <h3>Energy Line</h3>
+          <p>Clean focus and sustained energy. No jitters, no crash.</p>
+          <span class="link-arrow">Shop Energy</span>
+        </div>
+      </a>
+      <a href="/collections/mood" class="line-card">
+        <div class="line-card-bg" style="position:absolute;inset:0;background-image:url('mood-line-bg.jpg');background-size:cover;background-position:center;"></div>
+        <div class="line-card-overlay"></div>
+        <div class="line-card-content">
+          <h3>Mood Line</h3>
+          <p>Calm clarity without losing momentum. Stay balanced.</p>
+          <span class="link-arrow">Shop Mood</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews">
+    <div class="reviews-stats">
+      <div class="reviews-score">4.8</div>
+      <div class="reviews-stars">★★★★★</div>
+      <div class="reviews-count">Based on 334 verified reviews</div>
+      <p style="margin-top: 10px; font-size: 14px; color: rgba(255,255,255,0.5);">Join 10,000+ high performers who made the switch</p>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-title">Game changer for focus</div>
+        <div class="review-text">"I've tried every energy drink out there. F3 is the only one that gives me clean focus without the jitters or crash."</div>
+        <div class="review-author">— Marcus T.</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-title">Perfect for work</div>
+        <div class="review-text">"The Mood line is incredible. I stay calm and focused during stressful meetings. No more afternoon slump."</div>
+        <div class="review-author">— Sarah K.</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-title">Finally, a clean option</div>
+        <div class="review-text">"Zero sugar and actually tastes good? Sign me up. The Citrus Clarity is my daily driver now."</div>
+        <div class="review-author">— James R.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRAND STORY -->
+  <section class="brand-story">
+    <div class="story-grid">
+      <div class="story-image" style="aspect-ratio: 3/4; border-radius: 4px; overflow: hidden; border: 4px solid #B02225; box-shadow: 0 20px 50px rgba(0,0,0,0.15);">
+        <img src="lifestyle-desert.jpg" alt="F3 Energy Athlete" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+      </div>
+      <div class="story-content">
+        <h2>Built for People Going Somewhere</h2>
+        <p>F3 was created for high performers who refuse to compromise. We believe mental clarity shouldn't come with a price—no jitters, no crash, no artificial junk.</p>
+        <p>Every can is formulated with premium nootropics and natural caffeine to help you unlock your best work, every single day.</p>
+        <a href="/pages/about" class="btn btn-dark">Our Story</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="section-header">
+      <div class="section-label">Questions? We've Got Answers</div>
+      <h2 class="section-title">Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question">
+          How much caffeine is in each can?
+          <span class="icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Each can of F3 Energy contains 150mg of natural caffeine from green tea—about the same as a strong cup of coffee, but with L-Theanine to smooth out the energy curve. No jitters, just clean focus.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          Will I crash after drinking F3?
+          <span class="icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            No. Unlike traditional energy drinks loaded with sugar, F3 uses zero sugar and pairs natural caffeine with L-Theanine. This combination provides sustained energy without the spike-and-crash effect you get from other drinks.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          What's the difference between Energy and Mood lines?
+          <span class="icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            The <strong>Energy line</strong> is designed for focus and productivity—perfect for work, workouts, or anytime you need to lock in. The <strong>Mood line</strong> contains adaptogens that promote calm clarity and stress relief while keeping you sharp. Both are zero sugar and packed with nootropics.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          How does F3 actually taste?
+          <span class="icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            We spent months perfecting our flavors. F3 tastes like a premium sparkling beverage—refreshing, lightly carbonated, and not overly sweet. Our most popular flavors include Citrus Clarity, Tropical Theory, and Orangesicle. Check out our 4.8-star reviews to see what customers say!
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          Is F3 safe for daily use?
+          <span class="icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Yes! F3 is made with clean, natural ingredients and is designed to be a daily driver for high performers. We recommend 1-2 cans per day. All ingredients are non-GMO, vegan, and free from artificial colors, flavors, and preservatives.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          What's your return policy?
+          <span class="icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            We offer a 30-day money-back guarantee. If you're not completely satisfied with your purchase, contact us and we'll make it right. We're confident you'll love F3, but we want you to try it risk-free.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Hamburger menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const nav = document.getElementById('mainNav');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      nav.classList.toggle('active');
+    });
+
+    // Close menu when clicking a link
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        nav.classList.remove('active');
+      });
+    });
+
+    // FAQ Accordion functionality
+    document.querySelectorAll('.faq-question').forEach(button => {
+      button.addEventListener('click', () => {
+        const item = button.parentElement;
+        const isActive = item.classList.contains('active');
+
+        // Close all other items
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+
+        // Toggle current item
+        if (!isActive) {
+          item.classList.add('active');
+        }
+      });
+    });
+
+    // Carousel video play on hover
+    document.querySelectorAll('.content-card-media.video').forEach(card => {
+      const video = card.querySelector('video');
+      if (video) {
+        card.addEventListener('mouseenter', () => {
+          video.play();
+        });
+        card.addEventListener('mouseleave', () => {
+          video.pause();
+          video.currentTime = 0;
+        });
+      }
+    });
+
+    // Carousel arrow navigation
+    const carousel = document.querySelector('.content-carousel');
+    const leftArrow = document.querySelector('.carousel-arrow-left');
+    const rightArrow = document.querySelector('.carousel-arrow-right');
+    const scrollAmount = 300;
+
+    leftArrow.addEventListener('click', () => {
+      carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    });
+
+    rightArrow.addEventListener('click', () => {
+      carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    });
+  </script>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter">
+    <div class="newsletter-content">
+      <h2>Join the F3 Community</h2>
+      <p>Get 15% off your first order plus early access to new flavors and exclusive offers.</p>
+      <form class="newsletter-form">
+        <input type="email" placeholder="Enter your email">
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="logo footer-logo">
+          <img src="https://f3energy.com/cdn/shop/files/f3-logo-dark.png?v=1719325863" alt="F3 Energy" style="filter: brightness(0) invert(1);">
+        </a>
+        <p>Mental fuel for people going somewhere. Functional beverages designed for focus, clarity, and sustained performance.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <a href="/collections/energy">Energy Line</a>
+        <a href="/collections/mood">Mood Line</a>
+        <a href="/collections/all">All Products</a>
+        <a href="/collections/bundles">Bundles</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="/pages/about">About Us</a>
+        <a href="/pages/ingredients">Ingredients</a>
+        <a href="/pages/faq">FAQ</a>
+        <a href="/pages/contact">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+        <a href="#">Twitter</a>
+        <a href="#">Facebook</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 F3 Energy. All rights reserved.
+    </div>
+  </footer>
+
+</body>
+</html>
