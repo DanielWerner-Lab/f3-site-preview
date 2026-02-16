@@ -451,12 +451,21 @@
        ============================================ */
     .social-proof {
       padding: 60px 40px;
-      background: var(--f3-bg-alt);
+      background: var(--f3-bg-dark);
       overflow: hidden;
     }
 
     .social-proof .section-header {
       margin-bottom: 30px;
+    }
+
+    .social-proof .section-label,
+    .social-proof .section-title {
+      color: var(--f3-text-on-dark);
+    }
+
+    .social-proof .instagram-link {
+      color: var(--f3-text-on-dark);
     }
 
     .content-carousel {
@@ -480,7 +489,7 @@
     }
 
     .content-carousel::-webkit-scrollbar-track {
-      background: #ddd;
+      background: #333;
       border-radius: 3px;
     }
 
@@ -1023,7 +1032,7 @@
        ============================================ */
     .newsletter {
       padding: var(--section-spacing) 40px;
-      background: var(--f3-bg-alt);
+      background: var(--f3-bg-dark);
       text-align: center;
     }
 
@@ -1037,11 +1046,12 @@
       font-weight: 700;
       text-transform: uppercase;
       margin-bottom: 10px;
+      color: var(--f3-text-on-dark);
     }
 
     .newsletter p {
       font-size: 16px;
-      color: var(--f3-text-light);
+      color: rgba(255,255,255,0.7);
       margin-bottom: 30px;
     }
 
@@ -1054,13 +1064,20 @@
       flex: 1;
       padding: 16px 20px;
       font-size: 14px;
-      border: 1px solid #ddd;
-      border-radius: 0;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 4px;
       outline: none;
+      background: rgba(255,255,255,0.1);
+      color: white;
+    }
+
+    .newsletter-form input::placeholder {
+      color: rgba(255,255,255,0.5);
     }
 
     .newsletter-form input:focus {
       border-color: var(--f3-primary);
+      background: rgba(255,255,255,0.15);
     }
 
     .newsletter-form button {
@@ -1236,7 +1253,12 @@
        ============================================ */
     .faq {
       padding: var(--section-spacing) 40px;
-      background: var(--f3-bg-alt);
+      background: var(--f3-bg-dark);
+    }
+
+    .faq .section-label,
+    .faq .section-title {
+      color: var(--f3-text-on-dark);
     }
 
     .faq-list {
@@ -1245,9 +1267,9 @@
     }
 
     .faq-item {
-      background: white;
-      border: 1px solid #eee;
-      border-radius: 0;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
       margin-bottom: 12px;
       overflow: hidden;
     }
@@ -1264,13 +1286,13 @@
       font-size: 16px;
       font-weight: 600;
       text-align: left;
-      color: var(--f3-text);
+      color: var(--f3-text-on-dark);
       cursor: pointer;
       transition: background 0.2s;
     }
 
     .faq-question:hover {
-      background: var(--f3-bg-alt);
+      background: rgba(255,255,255,0.05);
     }
 
     .faq-question .icon {
@@ -1298,7 +1320,7 @@
     .faq-answer-content {
       padding: 0 25px 25px;
       font-size: 15px;
-      color: var(--f3-text-light);
+      color: rgba(255,255,255,0.7);
       line-height: 1.7;
     }
   </style>
